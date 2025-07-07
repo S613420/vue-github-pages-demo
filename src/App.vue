@@ -1,56 +1,126 @@
 <template>
   <div id="app">
-    <header class="header">
-      <h1>🚀 CI/CD - GitHub pages - AI demo 🤙</h1>
-      <p>A simple Vue.js 3 app deployed with GitHub Actions</p>
-    </header>
+    <cv-header aria-label="Deployment Platform">
+      <cv-skip-to-content href="#main-content">Skip to content</cv-skip-to-content>
+      <cv-header-name href="/" prefix="">Deployment Platform</cv-header-name>
+      <cv-header-nav>
+        <cv-header-menu-item href="/dashboard">Dashboard</cv-header-menu-item>
+        <cv-header-menu-item href="/deployments">Deployments</cv-header-menu-item>
+        <cv-header-menu-item href="/monitor">Monitor</cv-header-menu-item>
+        <cv-header-menu-item href="/settings">Settings</cv-header-menu-item>
+      </cv-header-nav>
+    </cv-header>
 
-    <main class="main">
-      <div class="card">
-        <h2>✅ Deployment Success!</h2>
-        <p>This Vue.js application was automatically built and deployed using:</p>
-        
-        <div class="tech-stack">
-          <div class="tech-item">
-            <h3>Frontend</h3>
-            <p>Vue 3 + Vite</p>
-          </div>
-          <div class="tech-item">
-            <h3>Hosting</h3>
-            <p>GitHub Pages</p>
-          </div>
-          <div class="tech-item">
-            <h3>CI/CD</h3>
-            <p>GitHub Actions</p>
-          </div>
-        </div>
-
-        <WelcomeMessage />
-        
-        <div class="actions">
-          <button @click="incrementCounter" class="btn btn-primary">
-            Clicked {{ counter }} times
-          </button>
-          <button @click="resetCounter" class="btn btn-secondary">
-            Reset
-          </button>
-        </div>
+    <main id="main-content" class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">CI/CD Management Console</h1>
+        <p class="page-subtitle">Automated deployment pipeline for modern applications</p>
       </div>
 
-      <div class="card">
-        <h2>🔗 Links</h2>
-        <div class="links">
-          <a href="https://vuejs.org/" target="_blank" class="link">Vue.js Docs</a>
-          <a href="https://vitejs.dev/" target="_blank" class="link">Vite Docs</a>
-          <a href="https://docs.github.com/en/pages" target="_blank" class="link">GitHub Pages</a>
-        </div>
+      <div class="content-grid">
+        <cv-tile class="status-tile">
+          <h2 class="tile-heading">Deployment Status</h2>
+          <p class="tile-description">Current build and deployment pipeline status</p>
+          
+          <cv-structured-list>
+            <cv-structured-list-heading>
+              <cv-structured-list-header-item>Component</cv-structured-list-header-item>
+              <cv-structured-list-header-item>Status</cv-structured-list-header-item>
+              <cv-structured-list-header-item>Technology</cv-structured-list-header-item>
+            </cv-structured-list-heading>
+            <cv-structured-list-body>
+              <cv-structured-list-row>
+                <cv-structured-list-item>Frontend Application</cv-structured-list-item>
+                <cv-structured-list-item>
+                  <cv-tag kind="green">Active</cv-tag>
+                </cv-structured-list-item>
+                <cv-structured-list-item>Vue 3 + Vite</cv-structured-list-item>
+              </cv-structured-list-row>
+              <cv-structured-list-row>
+                <cv-structured-list-item>Build Pipeline</cv-structured-list-item>
+                <cv-structured-list-item>
+                  <cv-tag kind="green">Successful</cv-tag>
+                </cv-structured-list-item>
+                <cv-structured-list-item>GitHub Actions</cv-structured-list-item>
+              </cv-structured-list-row>
+              <cv-structured-list-row>
+                <cv-structured-list-item>Hosting Platform</cv-structured-list-item>
+                <cv-structured-list-item>
+                  <cv-tag kind="green">Online</cv-tag>
+                </cv-structured-list-item>
+                <cv-structured-list-item>GitHub Pages</cv-structured-list-item>
+              </cv-structured-list-row>
+            </cv-structured-list-body>
+          </cv-structured-list>
+
+          <WelcomeMessage />
+          
+          <div class="actions-section">
+            <h3 class="actions-heading">Operations</h3>
+            <div class="button-group">
+              <cv-button @click="incrementCounter" kind="primary">
+                Execute Operation ({{ counter }})
+              </cv-button>
+              <cv-button @click="resetCounter" kind="secondary">
+                Reset Counter
+              </cv-button>
+            </div>
+          </div>
+        </cv-tile>
+
+        <cv-tile class="resources-tile">
+          <h2 class="tile-heading">Platform Resources</h2>
+          <p class="tile-description">Documentation and external resources</p>
+          
+          <cv-structured-list>
+            <cv-structured-list-body>
+              <cv-structured-list-row>
+                <cv-structured-list-item>
+                  <cv-link href="https://vuejs.org/" target="_blank">Vue.js Documentation</cv-link>
+                </cv-structured-list-item>
+              </cv-structured-list-row>
+              <cv-structured-list-row>
+                <cv-structured-list-item>
+                  <cv-link href="https://vitejs.dev/" target="_blank">Vite Build Tool</cv-link>
+                </cv-structured-list-item>
+              </cv-structured-list-row>
+              <cv-structured-list-row>
+                <cv-structured-list-item>
+                  <cv-link href="https://docs.github.com/en/pages" target="_blank">GitHub Pages Hosting</cv-link>
+                </cv-structured-list-item>
+              </cv-structured-list-row>
+              <cv-structured-list-row>
+                <cv-structured-list-item>
+                  <cv-link href="https://carbondesignsystem.com/" target="_blank">Carbon Design System</cv-link>
+                </cv-structured-list-item>
+              </cv-structured-list-row>
+            </cv-structured-list-body>
+          </cv-structured-list>
+        </cv-tile>
       </div>
+
+      <cv-tile class="deployment-info">
+        <h2 class="tile-heading">Deployment Information</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Environment:</span>
+            <span class="info-value">Production</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Last Deployment:</span>
+            <span class="info-value">{{ deploymentTime }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Build Version:</span>
+            <span class="info-value">v1.0.0</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Platform:</span>
+            <span class="info-value">Vue.js 3 + Carbon Design System</span>
+          </div>
+        </div>
+      </cv-tile>
     </main>
-
-    <footer class="footer">
-      <p>Built with ❤️ using Vue.js and deployed via GitHub Actions</p>
-      <p>Last deployed: {{ deploymentTime }}</p>
-    </footer>
   </div>
 </template>
 
@@ -86,6 +156,10 @@ export default {
 </script>
 
 <style>
+/* Import IBM Plex font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Reset and base styling using Carbon Design System patterns */
 * {
   margin: 0;
   padding: 0;
@@ -93,11 +167,10 @@ export default {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+  line-height: 1.5;
 }
 
 #app {
@@ -106,162 +179,135 @@ body {
   flex-direction: column;
 }
 
-.header {
-  text-align: center;
-  padding: 2rem;
-  color: white;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.main {
+/* Main content area */
+.main-content {
   flex: 1;
-  padding: 2rem;
-  max-width: 800px;
+  padding: var(--cds-spacing-07);
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
 
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+/* Page header */
+.page-header {
+  margin-bottom: var(--cds-spacing-08);
 }
 
-.card:hover {
-  transform: translateY(-2px);
+.page-title {
+  font-size: var(--cds-productive-heading-04-font-size);
+  font-weight: var(--cds-productive-heading-04-font-weight);
+  line-height: var(--cds-productive-heading-04-line-height);
+  margin-bottom: var(--cds-spacing-03);
+  color: var(--cds-text-primary);
 }
 
-.card h2 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+.page-subtitle {
+  font-size: var(--cds-body-long-01-font-size);
+  color: var(--cds-text-secondary);
 }
 
-.tech-stack {
+/* Content grid layout */
+.content-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--cds-spacing-06);
+  margin-bottom: var(--cds-spacing-07);
 }
 
-.tech-item {
-  text-align: center;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border: 2px solid #e9ecef;
+/* Tile styling */
+.status-tile,
+.resources-tile,
+.deployment-info {
+  padding: var(--cds-spacing-06);
 }
 
-.tech-item h3 {
-  color: #495057;
-  margin-bottom: 0.5rem;
+.tile-heading {
+  font-size: var(--cds-productive-heading-03-font-size);
+  font-weight: var(--cds-productive-heading-03-font-weight);
+  margin-bottom: var(--cds-spacing-04);
+  color: var(--cds-text-primary);
 }
 
-.actions {
+.tile-description {
+  font-size: var(--cds-body-short-01-font-size);
+  color: var(--cds-text-secondary);
+  margin-bottom: var(--cds-spacing-06);
+}
+
+/* Actions section */
+.actions-section {
+  margin-top: var(--cds-spacing-07);
+  padding-top: var(--cds-spacing-06);
+  border-top: 1px solid var(--cds-border-subtle);
+}
+
+.actions-heading {
+  font-size: var(--cds-productive-heading-02-font-size);
+  font-weight: var(--cds-productive-heading-02-font-weight);
+  margin-bottom: var(--cds-spacing-05);
+  color: var(--cds-text-primary);
+}
+
+.button-group {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: var(--cds-spacing-05);
   flex-wrap: wrap;
 }
 
-.btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* Deployment info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--cds-spacing-05);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cds-spacing-02);
+}
+
+.info-label {
+  font-size: var(--cds-label-01-font-size);
+  font-weight: var(--cds-label-01-font-weight);
+  color: var(--cds-text-secondary);
+}
+
+.info-value {
+  font-size: var(--cds-body-short-01-font-size);
+  color: var(--cds-text-primary);
   font-weight: 500;
 }
 
-.btn-primary {
-  background: #007bff;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #0056b3;
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: #6c757d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #545b62;
-  transform: translateY(-1px);
-}
-
-.links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.link {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #e3f2fd;
-  color: #1976d2;
-  text-decoration: none;
-  border-radius: 6px;
-  border: 1px solid #bbdefb;
-  transition: all 0.2s ease;
-}
-
-.link:hover {
-  background: #1976d2;
-  color: white;
-  transform: translateY(-1px);
-}
-
-.footer {
-  text-align: center;
-  padding: 2rem;
-  color: white;
-  background: rgba(0, 0, 0, 0.1);
-  margin-top: auto;
-}
-
-.footer p {
-  opacity: 0.9;
-  margin-bottom: 0.5rem;
-}
-
+/* Responsive design */
 @media (max-width: 768px) {
-  .header h1 {
-    font-size: 2rem;
+  .content-grid {
+    grid-template-columns: 1fr;
   }
   
-  .main {
-    padding: 1rem;
+  .main-content {
+    padding: var(--cds-spacing-05);
   }
   
-  .card {
-    padding: 1.5rem;
+  .page-title {
+    font-size: var(--cds-productive-heading-03-font-size);
   }
   
-  .actions {
+  .button-group {
     flex-direction: column;
   }
   
-  .links {
-    flex-direction: column;
+  .info-grid {
+    grid-template-columns: 1fr;
   }
+}
+
+/* Ensure proper spacing for Carbon components */
+.cv-structured-list {
+  margin-bottom: var(--cds-spacing-05);
+}
+
+.cv-tile {
+  margin-bottom: var(--cds-spacing-06);
 }
 </style>
