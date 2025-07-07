@@ -49,7 +49,7 @@ npm run build
 
 ## 🌐 Live Demo
 
-The application is automatically deployed to: `https://[username].github.io/vue-github-pages-demo`
+The application is automatically deployed to: `https://S613420.github.io/vue-github-pages-demo`
 
 ## 📝 Learning Objectives
 
