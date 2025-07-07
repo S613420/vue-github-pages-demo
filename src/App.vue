@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header class="header">
-      <h1>🚀 Vue GitHub Pages Demo</h1>
+      <h1>🚀 CI/CD - GitHub pages - AI demo 🤙</h1>
       <p>A simple Vue.js 3 app deployed with GitHub Actions</p>
     </header>
 
