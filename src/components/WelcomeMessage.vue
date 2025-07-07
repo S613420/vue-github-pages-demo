@@ -1,27 +1,58 @@
 <template>
-  <div class="welcome-message">
-    <h3>🎉 Welcome to the Demo!</h3>
-    <p>This component demonstrates:</p>
-    <ul>
-      <li>✅ Vue 3 Composition API</li>
-      <li>✅ Component-based architecture</li>
-      <li>✅ Responsive design</li>
-      <li>✅ Modern CSS styling</li>
-      <li>✅ GitHub Actions deployment</li>
-    </ul>
+  <div class="platform-overview">
+    <h3 class="overview-heading">Platform Overview</h3>
+    <p class="overview-description">This deployment platform demonstrates modern CI/CD capabilities:</p>
     
-    <div class="status">
-      <div class="status-item">
-        <span class="status-label">Build Status:</span>
-        <span class="status-value success">✅ Success</span>
-      </div>
-      <div class="status-item">
-        <span class="status-label">Deployment:</span>
-        <span class="status-value success">✅ Live</span>
-      </div>
-      <div class="status-item">
-        <span class="status-label">Environment:</span>
-        <span class="status-value">{{ environment }}</span>
+    <cv-structured-list class="capabilities-list">
+      <cv-structured-list-body>
+        <cv-structured-list-row>
+          <cv-structured-list-item>
+            <cv-checkmark-filled16 class="capability-icon" />
+            Vue 3 Composition API
+          </cv-structured-list-item>
+        </cv-structured-list-row>
+        <cv-structured-list-row>
+          <cv-structured-list-item>
+            <cv-checkmark-filled16 class="capability-icon" />
+            Component-based architecture
+          </cv-structured-list-item>
+        </cv-structured-list-row>
+        <cv-structured-list-row>
+          <cv-structured-list-item>
+            <cv-checkmark-filled16 class="capability-icon" />
+            Responsive design system
+          </cv-structured-list-item>
+        </cv-structured-list-row>
+        <cv-structured-list-row>
+          <cv-structured-list-item>
+            <cv-checkmark-filled16 class="capability-icon" />
+            IBM Carbon Design System
+          </cv-structured-list-item>
+        </cv-structured-list-row>
+        <cv-structured-list-row>
+          <cv-structured-list-item>
+            <cv-checkmark-filled16 class="capability-icon" />
+            Automated deployment pipeline
+          </cv-structured-list-item>
+        </cv-structured-list-row>
+      </cv-structured-list-body>
+    </cv-structured-list>
+    
+    <div class="system-status">
+      <h4 class="status-heading">System Status</h4>
+      <div class="status-grid">
+        <div class="status-metric">
+          <span class="metric-label">Build Status:</span>
+          <cv-tag kind="green">Operational</cv-tag>
+        </div>
+        <div class="status-metric">
+          <span class="metric-label">Deployment:</span>
+          <cv-tag kind="green">Active</cv-tag>
+        </div>
+        <div class="status-metric">
+          <span class="metric-label">Environment:</span>
+          <cv-tag kind="blue">{{ environment }}</cv-tag>
+        </div>
       </div>
     </div>
   </div>
@@ -29,12 +60,16 @@
 
 <script>
 import { ref, computed } from 'vue'
+import { CheckmarkFilled16 } from '@carbon/icons-vue'
 
 export default {
   name: 'WelcomeMessage',
+  components: {
+    CheckmarkFilled16
+  },
   setup() {
     const environment = computed(() => {
-      return import.meta.env.MODE === 'production' ? '🌐 Production' : '🛠️ Development'
+      return import.meta.env.MODE === 'production' ? 'Production' : 'Development'
     })
 
     return {
@@ -45,65 +80,80 @@ export default {
 </script>
 
 <style scoped>
-.welcome-message {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  border-radius: 12px;
-  padding: 2rem;
-  color: white;
-  margin: 2rem 0;
+.platform-overview {
+  background-color: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle);
+  border-radius: var(--cds-border-radius);
+  padding: var(--cds-spacing-06);
+  margin: var(--cds-spacing-06) 0;
 }
 
-.welcome-message h3 {
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+.overview-heading {
+  font-size: var(--cds-productive-heading-03-font-size);
+  font-weight: var(--cds-productive-heading-03-font-weight);
+  color: var(--cds-text-primary);
+  margin-bottom: var(--cds-spacing-04);
 }
 
-.welcome-message ul {
-  list-style: none;
-  margin: 1rem 0;
+.overview-description {
+  font-size: var(--cds-body-short-01-font-size);
+  color: var(--cds-text-secondary);
+  margin-bottom: var(--cds-spacing-05);
 }
 
-.welcome-message li {
-  padding: 0.3rem 0;
-  font-size: 0.95rem;
+.capabilities-list {
+  margin-bottom: var(--cds-spacing-06);
 }
 
-.status {
+.capability-icon {
+  color: var(--cds-support-success);
+  margin-right: var(--cds-spacing-03);
+  vertical-align: middle;
+}
+
+.cv-structured-list-item {
+  display: flex;
+  align-items: center;
+  font-size: var(--cds-body-short-01-font-size);
+  color: var(--cds-text-primary);
+}
+
+.system-status {
+  padding-top: var(--cds-spacing-05);
+  border-top: 1px solid var(--cds-border-subtle);
+}
+
+.status-heading {
+  font-size: var(--cds-productive-heading-02-font-size);
+  font-weight: var(--cds-productive-heading-02-font-weight);
+  color: var(--cds-text-primary);
+  margin-bottom: var(--cds-spacing-04);
+}
+
+.status-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  gap: var(--cds-spacing-04);
 }
 
-.status-item {
+.status-metric {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  gap: var(--cds-spacing-02);
 }
 
-.status-label {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-bottom: 0.3rem;
-}
-
-.status-value {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.status-value.success {
-  color: #90ee90;
+.metric-label {
+  font-size: var(--cds-label-01-font-size);
+  font-weight: var(--cds-label-01-font-weight);
+  color: var(--cds-text-secondary);
 }
 
 @media (max-width: 768px) {
-  .welcome-message {
-    padding: 1.5rem;
+  .platform-overview {
+    padding: var(--cds-spacing-05);
   }
   
-  .status {
+  .status-grid {
     grid-template-columns: 1fr;
   }
 }
